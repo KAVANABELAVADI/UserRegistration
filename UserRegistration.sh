@@ -4,10 +4,13 @@ read -p "Enter User First Name - " firstName
 read -p "Enter User Last Name - " lastName
 read -p "Enter Email ID - " email
 read -p "Enter Contact Number with Country Code" phone
+read -p "Enter Password - " password
+
 
 NamePat="^[A-Z]{1}[a-z]{2,6}$"
-emailPat="^0-9a-zA-Z]+([._+-][0-9a-zA-Z]+)*@[0-9a-zA-Z]+.[a-zA-z]{2,4}([.][a-zA-Z]{2}+)*$"
+emailPat="^[0-9a-zA-Z]+([._+-][0-9a-zA-Z]+)*@[0-9a-zA-Z]+.[a-zA-z]{2,4}([.][a-zA-Z]{2}+)*$"
 phonePat="^[0-9]{2}[0-9]{10}$"
+pwdPat="(?=^.{8,}$)(?=.*[A-Z])"
 
 if [[ $firstName =~ $NamePat ]]
 then
@@ -17,7 +20,12 @@ then
 		then
 			if [[ $phone =~ $phonePat ]]
 			then
-				echo "Valid Phone Number"
+				if [[ $password =~ $pwdPat ]] 
+				then
+					echo "Valid Password"
+				else
+					echo "Enter Valid Password"
+				fi
 			else
 				echo "Enter Valid Phone Number"
 			fi
