@@ -22,7 +22,7 @@ then
 			then
 				if [[ $password =~ $pwdPat ]] 
 				then
-					echo "Valid Password"
+					echo "You are ready to Register"
 				else
 					echo "Enter Valid Password"
 				fi
